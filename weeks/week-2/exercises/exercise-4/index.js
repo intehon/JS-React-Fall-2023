@@ -51,11 +51,12 @@ makeThemBig(pokemons)
 
 const onlyTheBs = () => {
   // only print the pokemons that starts with B
-  pokemons.forEach((pokemon) => {
-    if (pokemon.charAt(0) === 'B') {
-      console.log(pokemon)
-    }
-  })
+  console.log(pokemons.filter((pokemon) => pokemon.charAt(0) === 'B'))
+  // pokemons.forEach((pokemon) => {
+  //   if (pokemon.charAt(0) === 'B') {
+  //     console.log(pokemon)
+  //   }
+  // })
 };
 
 onlyTheBs()
@@ -99,24 +100,39 @@ console.log(pokemons)
 
 const didICatchIt = name => {
   // check the pokemons to see if a specific pokemon is in the array
-  if (pokemons.includes(name)) {
-    console.log(true)
-  } else {
-    console.log(false)
-  }
+  console.log(pokemons.includes(name))
+  // if (pokemons.includes(name)) {
+  //   console.log(true)
+  // } else {
+  //   console.log(false)
+  // }
 };
 
-didICatchIt("")
+didICatchIt("Clefairy")
 
 
 
-const addInThirdPlace = () => {
+const addInThirdPlace = (newPokemon) => {
   // add the pokemon "Clefairy" in the third place of the array
   // print the list so you see its there.
-  
+  pokemons.splice(2, 0, newPokemon)
 };
+
+addInThirdPlace("Clefairy")
+console.log(pokemons)
 
 // ***BONUS***
 const theLongestName = () => {
   // find the pokemon with the longest name
+  let longestName = pokemons[0]
+
+  for (let i = 0; i < pokemons.length; i++) {
+    if (pokemons[i].length > longestName.length) {
+      longestName = pokemons[i]
+    }
+  }
+  return longestName
 };
+
+const longestName = theLongestName(pokemons)
+console.log(`The longest name in the list is ${longestName}`)
